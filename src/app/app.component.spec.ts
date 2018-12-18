@@ -1,5 +1,6 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {async, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {By} from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,20 +13,16 @@ describe('AppComponent', () => {
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'testing-jargon'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('testing-jargon');
-  });
-
-  it('should render title in a h1 tag', () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to testing-jargon!');
+    const h1 = fixture.debugElement.query(By.css('h1'));
+    expect(h1).toBeTruthy();
+    expect(h1.nativeElement.textContent).toContain('Jargon');
   });
 });
